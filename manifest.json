@@ -1,0 +1,9 @@
+{
+    "domain": "kwb_tcp",
+    "name": "KWB TCP",
+    "version": "0.1.0",
+    "documentation": "https://github.com/MasterTribun69/kwb_tcp",
+    "dependencies": [],
+    "codeowners": ["@MasterTribun69"],
+    "requirements": []
+}
