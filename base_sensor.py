@@ -5,6 +5,7 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, Coor
 from pymodbus.client import ModbusTcpClient
 import logging
 from datetime import timedelta
+from homeassistant.config_entries import ConfigEntry
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -20,7 +21,7 @@ class ModbusConnector:
         return self.client.read_holding_registers(address=address, count=count)
 
 class KwbSensorBase(CoordinatorEntity, SensorEntity):
-    def __init__(self, coordinator, name, definition):
+    def __init__(self, coordinator, name, definition, entry):
         super().__init__(coordinator)
         self._name = name
         self._definition = definition
@@ -31,6 +32,7 @@ class KwbSensorBase(CoordinatorEntity, SensorEntity):
         self._description = definition["description"]
         self._attr_unique_id = f"kwb_{self._address}"
         self._attr_native_unit_of_measurement = self._unit
+        self._attr_config_entry_id = entry.entry_id
 
     @property
     def name(self):
@@ -56,6 +58,16 @@ class KwbSensorBase(CoordinatorEntity, SensorEntity):
                 else:
                     attrs["Status Info"] = "Ein" if val == 1 else "Aus"
         return attrs
+    
+    @property
+    def device_info(self):
+        return {
+            "identifiers": {(self._attr_config_entry_id, "kwb_heizung")},
+            "name": "KWB Heizung",
+            "manufacturer": "KWB",
+            "model": "Modbus TCP",
+            "configuration_url": None
+        }
 
 class KwbAlarmSensorBase(CoordinatorEntity, SensorEntity):
     def __init__(self, coordinator, alarm_texts):
@@ -74,3 +86,4 @@ class KwbAlarmSensorBase(CoordinatorEntity, SensorEntity):
     @property
     def extra_state_attributes(self):
         return {"aktive_alarme": self.coordinator.data.get("alarms", [])}
+    

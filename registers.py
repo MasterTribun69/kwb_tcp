@@ -20,7 +20,10 @@ REGISTER_DEFINITIONS = {
         "type": "int",
         "scale": 1.0,
         "unit": "°C",
-        "description": None
+        "description": None,
+        "writable": True,
+        "min": 65,
+        "max": 90
     },
     "Alarme beheben": {
         "address": 2302,
@@ -40,7 +43,9 @@ REGISTER_DEFINITIONS = {
         "scale": 1.0,
         "unit": "°C",
         "description": None,
-        "writable": True
+        "writable": True,
+        "min": 0,
+        "max": 90
     },
     "Puffer 0 Temperatur Minimum": {
         "address": 2308,
@@ -48,7 +53,9 @@ REGISTER_DEFINITIONS = {
         "scale": 1.0,
         "unit": "°C",
         "description": None,
-        "writable": True
+        "writable": True,
+        "min": 0,
+        "max": 90
     },
     "Puffer 0 Programm": {
         "address": 2309,
@@ -61,7 +68,28 @@ REGISTER_DEFINITIONS = {
             1: "Temperatur",
             2: "Aus",
             3: "Handbetrieb"
-        }
+        },
+        "writable": True
+    },
+    "Glutbett minimum": {
+        "address": 2309,
+        "type": "int",
+        "scale": 1.0,
+        "unit": "°C",
+        "description": None,
+        "writable": True,
+        "min": 250,
+        "max": 450
+    },
+    "Glutbett maximum": {
+        "address": 2310,
+        "type": "int",
+        "scale": 1.0,
+        "unit": "°C",
+        "description": None,
+        "writable": True,
+        "min": 250,
+        "max": 450
     },
     "Kesselanforderung": {
         "address": 2334,
@@ -103,6 +131,13 @@ REGISTER_DEFINITIONS = {
             5: "Abstellen",
             6: "Störung"
         }
+    },
+    "Glutbett Niveau": {
+        "address": 2342,
+        "type": "int",
+        "scale": 1.0,
+        "unit": "°C",
+        "description": None,
     },
     "Rauchgastemperatur": {
         "address": 2346,
@@ -191,6 +226,45 @@ REGISTER_DEFINITIONS = {
             0: "Aus",
             1: "Ein"
         }
+    },
+    "Endschalter Auf Brandschutzklappe": {
+        "address": 2373,
+        "type": "status",
+        "scale": 1.0,
+        "unit": None,
+        "description": "0 = Aus\n1 = Ein",
+        "value_map": {
+            0: "Aus",
+            1: "Ein"
+        }
+    },
+    "Endschalter Zu Brandschutzklappe": {
+        "address": 2375,
+        "type": "status",
+        "scale": 1.0,
+        "unit": None,
+        "description": "0 = Aus\n1 = Ein",
+        "value_map": {
+            0: "Aus",
+            1: "Ein"
+        }
+    },
+    "Kesselpumpe": {
+        "address": 2385,
+        "type": "int",
+        "scale": 1.0,
+        "unit": "%",
+        "description": None
+    },
+    "Brennstofffaktor": {
+        "address": 2391,
+        "type": "int",
+        "scale": 1.0,
+        "unit": "%",
+        "description": None,
+        "writable": True,
+        "min": 10,
+        "max": 700
     },
     "Kessel Solltemperatur": {
         "address": 2392,

@@ -1,5 +1,3 @@
-# sensor.py (korrekt mit Status-Typ-Behandlung)
-
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -13,9 +11,9 @@ from .const import DEFAULT_SCAN_INTERVAL
 
 _LOGGER = logging.getLogger(__name__)
 
-async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry, async_add_entities: AddEntitiesCallback):
-    ip = config_entry.data.get("ip_address")
-    port = config_entry.data.get("port")
+async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback):
+    ip = entry.data.get("ip_address")
+    port = entry.data.get("port")
 
     try:
         modbus = ModbusConnector(ip, port)
@@ -80,13 +78,13 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry, asyn
     await coordinator.async_config_entry_first_refresh()
 
     sensors = [
-    KwbSensorBase(coordinator, name, definition)
-    for name, definition in REGISTER_DEFINITIONS.items()
-    if not (
-        definition.get("writable") and
-        definition.get("type") == "status" and
-        "value_map" in definition
-    )
+        KwbSensorBase(coordinator, name, definition, entry)
+        for name, definition in REGISTER_DEFINITIONS.items()
+        if not (
+            definition.get("writable") and
+            definition.get("type") == "status" and
+            "value_map" in definition
+        )
     ]
     sensors.append(KwbAlarmSensorBase(coordinator, ALARM_TEXTS))
     async_add_entities(sensors)
