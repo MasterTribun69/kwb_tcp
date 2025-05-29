@@ -8,10 +8,12 @@ REGISTER_DEFINITIONS = {
         "scale": 1.0,
         "unit": None,
         "description": "0 = Aus\n1 = Ein",
+        "writable": True,
         "value_map": {
             0: "Aus",
             1: "Ein"
         }
+        
     },
     "Kesseltemperatur Soll 1": {
         "address": 2301,
@@ -26,6 +28,7 @@ REGISTER_DEFINITIONS = {
         "scale": 1.0,
         "unit": None,
         "description": "0 = Aus\n1 = Ein",
+        "writable": True,
         "value_map": {
             0: "Aus",
             1: "Ein"
@@ -36,7 +39,7 @@ REGISTER_DEFINITIONS = {
         "type": "int",
         "scale": 1.0,
         "unit": "°C",
-        "description": None
+        "description": None,
         "writable": True
     },
     "Puffer 0 Temperatur Minimum": {
@@ -44,7 +47,8 @@ REGISTER_DEFINITIONS = {
         "type": "int",
         "scale": 1.0,
         "unit": "°C",
-        "description": None
+        "description": None,
+        "writable": True
     },
     "Puffer 0 Programm": {
         "address": 2309,

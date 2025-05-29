@@ -2,12 +2,12 @@
   "domain": "kwb_tcp",
   "name": "KWB TCP Heizungsintegration",
   "version": "1.0.0",
-  "documentation": "https://github.com/MasterTribun69/kwb_tcp",
+  "documentation": "https://example.com",
   "dependencies": [],
-  "codeowners": ["@MasterTribun69"],
+  "codeowners": ["@yourgithub"],
   "requirements": ["pymodbus>=3.0.0"],
   "config_flow": true,
   "integration_type": "hub",
   "iot_class": "local_polling",
-  "platforms": ["sensor"]
+  "platforms": ["sensor", "number", "select"]
 }

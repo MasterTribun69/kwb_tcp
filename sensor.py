@@ -79,6 +79,14 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry, asyn
 
     await coordinator.async_config_entry_first_refresh()
 
-    sensors = [KwbSensorBase(coordinator, name, definition) for name, definition in REGISTER_DEFINITIONS.items()]
+    sensors = [
+    KwbSensorBase(coordinator, name, definition)
+    for name, definition in REGISTER_DEFINITIONS.items()
+    if not (
+        definition.get("writable") and
+        definition.get("type") == "status" and
+        "value_map" in definition
+    )
+    ]
     sensors.append(KwbAlarmSensorBase(coordinator, ALARM_TEXTS))
     async_add_entities(sensors)
