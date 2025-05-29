@@ -1,0 +1,9 @@
+DOMAIN = "kwb_tcp"
+DEFAULT_PORT = 503
+DEFAULT_SCAN_INTERVAL = 5
+
+CONF_IP_ADDRESS = "ip_address"
+CONF_PORT = "port"
+CONF_FILTER = "register_filter"
+TEMP_CELSIUS = "°C"
+PERCENTAGE = "%"

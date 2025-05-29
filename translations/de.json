@@ -1,0 +1,22 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "KWB Heizung einrichten",
+                "description": "Gib die IP-Adresse und den Port der KWB Modbus TCP-Schnittstelle ein.",
+                "data": {
+                    "host": "IP-Adresse",
+                    "port": "Modbus TCP Port"
+                }
+            }
+        }
+    },
+    "title": "KWB Heizung",
+    "options": {
+        "step": {
+            "init": {
+                "title": "Optionen anpassen"
+            }
+        }
+    }
+}

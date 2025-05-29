@@ -1,0 +1,22 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "KWB TCP Configuration",
+                "description": "GPlease enter the connection details.",
+                "data": {
+                    "host": "IP Address",
+                    "port": "TCP Port"
+                }
+            }
+        }
+    },
+    "title": "KWB Heater",
+    "options": {
+        "step": {
+            "init": {
+                "title": "Configuration options"
+            }
+        }
+    }
+}
