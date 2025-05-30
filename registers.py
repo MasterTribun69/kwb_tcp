@@ -136,7 +136,7 @@ REGISTER_DEFINITIONS = {
         "address": 2342,
         "type": "int",
         "scale": 1.0,
-        "unit": "°C",
+        "unit": None,
         "description": None,
     },
     "Rauchgastemperatur": {
