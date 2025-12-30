@@ -22,6 +22,10 @@ async def create_coordinator(hass, entry):
                         data[name] = None
                     else:
                         raw = result.registers[0]
+                        invalid_values = definition.get("invalid_values")
+                        if invalid_values and raw in invalid_values:
+                            data[name] = None
+                            continue
                         dtype = definition["type"]
                         scale = definition["scale"]
                         if dtype == "float":

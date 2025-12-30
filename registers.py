@@ -1,6 +1,8 @@
 
 from .const import TEMP_CELSIUS, PERCENTAGE
 
+INVALID_REGISTER_VALUES = [0xFFFF]
+
 REGISTER_DEFINITIONS = {
     "Anlage Aus/Ein": {
         "address": 2300,
@@ -323,7 +325,8 @@ REGISTER_DEFINITIONS = {
         "type": "float",
         "scale": 0.1,
         "unit": "°C",
-        "description": None
+        "description": None,
+        "invalid_values": INVALID_REGISTER_VALUES,
     },
     "HK0 Raumtemperatur": {
         "address": 2437,
@@ -369,7 +372,8 @@ REGISTER_DEFINITIONS = {
         "type": "float",
         "scale": 0.1,
         "unit": "°C",
-        "description": None
+        "description": None,
+        "invalid_values": INVALID_REGISTER_VALUES,
     },
     "HK1 Raumtemperatur": {
         "address": 2443,
@@ -401,7 +405,8 @@ REGISTER_DEFINITIONS = {
         "type": "float",
         "scale": 0.1,
         "unit": "°C",
-        "description": None
+        "description": None,
+        "invalid_values": INVALID_REGISTER_VALUES,
     },
     "HK2 Raumtemperatur": {
         "address": 2447,
